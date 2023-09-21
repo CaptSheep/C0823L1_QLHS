@@ -58,6 +58,9 @@ public class Student {
                 this.avgPoint = avgPoint;
         }
 
+        public String getInfo(){
+                return id+","+name+","+age+","+gender+","+avgPoint;
+        }
         @Override
         public String toString() {
                 return "Student{" +

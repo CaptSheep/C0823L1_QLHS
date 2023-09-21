@@ -3,6 +3,9 @@ package services;
 import model.Classes;
 import model.Student;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,7 +26,21 @@ public class StudentManager {
         }
     }
 
-    public void addStudent(ClassManage classManage){
+    public void writeFileStudent(ArrayList<Student> students) throws IOException {
+        FileWriter fileWriter = new FileWriter("Student.txt");
+        BufferedWriter bufferedWriter= new BufferedWriter(fileWriter);
+        for(Student student : students){
+           bufferedWriter.write( student.getInfo());
+        }
+        bufferedWriter.close();
+        fileWriter.close();
+    }
+
+    public void readFileStudent(){
+
+    }
+
+    public void addStudent(ClassManage classManage) throws IOException{
         System.out.println("Input Student name :");
         String name= scanner.nextLine();
         System.out.println("Input Student Age :");
@@ -48,6 +65,7 @@ public class StudentManager {
         if(findClass != null){
             Student student = new Student(name,age,gender,point,findClass);
             students.add(student);
+            this.writeFileStudent(students);
             System.out.println("Create Student Success");
         }
         else {

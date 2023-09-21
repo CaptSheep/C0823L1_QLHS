@@ -29,6 +29,13 @@ public class Classes {
         this.name = name;
     }
 
+
+    // Tạo 1 phương thức trả về thông tin đối tượng bao gồm : id , name
+    // Khác toString() => trả về Classes{ id= ... ,name= ... }
+    public String classInfo(){
+        return id+","+name;
+    }
+
     @Override
     public String toString() {
         return "Classes{" +

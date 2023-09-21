@@ -3,6 +3,7 @@ package services;
 import model.Classes;
 import model.Student;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,9 +15,10 @@ public class ClassManage {
     private ArrayList<Classes> classes;
     private Scanner scanner;
 
-    public ClassManage(){
+    public ClassManage() throws IOException {
         classes = new ArrayList<Classes>();
         scanner = new Scanner(System.in);
+        this.readFileClass(classes);
     }
 
     public void showClasses(){
@@ -26,7 +28,38 @@ public class ClassManage {
         }
     }
 
-    public void addClasses(){
+
+
+    public void writeFileClass(ArrayList<Classes> classes) throws IOException {
+        // Bước 1 : Khai báo FileWriter ( nơi minh sẽ ghi thông tin vào )
+        FileWriter fileWriter = new FileWriter("Class.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        // Bước 2 : Muốn in cái gì ????
+        for(Classes classInfo : classes){
+            bufferedWriter.write(classInfo.classInfo());
+            // newLine () sẽ in ra 1 dòng mới thay vì ghi cùng dòng với giá trị trước
+            bufferedWriter.newLine();
+        }
+        bufferedWriter.close();
+        fileWriter.close();
+
+    }
+
+    public void readFileClass(ArrayList<Classes> classes) throws IOException {
+        FileReader fileReader = new FileReader("Class.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String data = "";
+        while((data = bufferedReader.readLine()) != null){
+            // data = 1,C0823L1
+            // data sau khi split = {1,C0823L1} ( mảng gồm 2 phần tử ( id, name ) )
+            String [] arrayData  = data.split(",");
+            Classes newClass = new Classes(arrayData[1]);
+            classes.add(newClass);
+        }
+    }
+
+    public void addClasses() throws IOException {
         System.out.println("Input class name : ");
         String nameClass = scanner.nextLine();
 
@@ -37,6 +70,7 @@ public class ClassManage {
         // Bước 4 :  Classes class = new Class("name")
 
         classes.add(new Classes(nameClass));
+        this.writeFileClass(classes);
         System.out.println("Add Class Success");
     }
 

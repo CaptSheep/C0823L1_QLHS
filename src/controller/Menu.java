@@ -3,6 +3,7 @@ package controller;
 import services.ClassManage;
 import services.StudentManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,7 +11,10 @@ public class Menu {
     StudentManager studentManager = new StudentManager();
     Scanner scanner = new Scanner(System.in);
 
-    public void mainMenu(){
+    public Menu() throws IOException {
+    }
+
+    public void mainMenu() throws IOException {
         int choice;
        do{
            System.out.println("1 . Class Menu");
@@ -29,7 +33,7 @@ public class Menu {
        while (true);
     }
 
-    public void classMenu(){
+    public void classMenu() throws IOException {
         int choice;
         do{
             System.out.println("1 . Create class");
@@ -60,7 +64,7 @@ public class Menu {
         }
         while (true);
     }
-    public void studentMenu(){
+    public void studentMenu() throws IOException {
         int choice;
         do{
             System.out.println("1 . Create new Student");
