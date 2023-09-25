@@ -1,0 +1,29 @@
+INTERFACE :
+
+- Đa triển khai
+- Là bản thiết kế class
+- Quy định các phương thức / hành vi chung cho các lớp
+- Chứa hằng số ( ví dụ : class ngoài interface thì phải dùng final
+                         nhưng trong interface thì không cần
+                         ở ngoài class : final int number = 1
+                         trong interface : int number = 1)
+- Phương thức trừu tượng : không có phần thân
++ Ví dụ : void showAll();
+- Từ khoá triển khai : implements
+- Khi triển khai thì phải triển khai đủ tất cả phương thức có trong interface
+- Không thể khởi tạo đối tượng mới từ Interface
+
+
+
+ABSTRACT CLASS
+
+- Phải có từ khoá abstracts trước tên lớp
+- Chứa các thuộc tính và phương thức trừu tượng và không trừu tượng
++ Trừu tượng : không thân
++ Không trừu tượng : có thân như phương thức bình thường
+- Không thể khởi tạo đối tượng mới từ abstracts class
+- NẾU CÓ PHƯƠNG THỨC HOẶC THUỘC TÍNH ABSTRACT THÌ BẮT BUỘC LỚP ĐÓ PHẢI LÀ ABSTRACT
+- Sử dụng để làm lớp kế thừa ( các lớp con sẽ kế thừa và triển khai lớp abstract + các phương thức
+hoặc thuộc tính abstract )
+
+
